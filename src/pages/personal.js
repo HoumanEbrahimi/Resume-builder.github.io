@@ -10,7 +10,8 @@ const Personal = () => {
 
     return(
 
-    <Form>
+    <Form >
+      <h1 className="centering"> Personal info </h1>
       <Row className="mb-3">
         <Form.Group as={Col} controlId="formGridEmail">
           <Form.Label>Email</Form.Label>
@@ -28,10 +29,13 @@ const Personal = () => {
         <Form.Control placeholder="Address" />
       </Form.Group>
 
-      <Form.Group className="mb-3" controlId="formGridAddress2">
-        <Form.Label>Address 2</Form.Label>
-        <Form.Control placeholder="Apartment, studio, or floor" />
+      <Form.Group className="mb-3" controlId="formGridAddress1">
+        <Form.Label>LinkedIn</Form.Label>
+        <Form.Control placeholder="URL" />
       </Form.Group>
+
+
+
 
       <Row className="mb-3">
         <Form.Group as={Col} controlId="formGridCity">
@@ -43,6 +47,9 @@ const Personal = () => {
           <Form.Label>State</Form.Label>
           <Form.Select defaultValue="Choose...">
             <option>Choose...</option>
+            <option> Ontario</option>
+            <option> Quebec</option>
+            <option> British Colombia </option>
             <option>...</option>
           </Form.Select>
         </Form.Group>
@@ -54,8 +61,8 @@ const Personal = () => {
       </Row>
 
 
-      <Button variant="primary" type="submit">
-        Submit
+      <Button className="centering" variant="primary" type="submit">
+        Next
       </Button>
     </Form>
 
