@@ -10,19 +10,22 @@ import Experiences from './experienceTab'
 
 const Experience = () =>{
     let forms=[];
-    console.log(forms.length)
 
     const clicker = () =>{
-      forms.push(<Experiences/>)
-      console.log(forms.length)
-      console.log(forms[0])
-      
+      forms.push(<Experiences/>);
     }
   return (
   <div className="centering">
   <h1> Experience</h1>
+  <br></br>
 
+    <h2 > Job 1</h2>
   <Experiences/>
+  <br></br>
+
+    <br></br>
+  <h2 > Job 2</h2>
+
 
   <div className="col-12">
     <button type="submit" className="btn btn-primary" onClick={clicker}>Add Section </button>
@@ -34,7 +37,6 @@ const Experience = () =>{
   </div>
         </div>
   )
-
 
 }
 export default Experience;

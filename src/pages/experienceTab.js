@@ -5,10 +5,25 @@ import Form from 'react-bootstrap/Form';
 import Row from 'react-bootstrap/Row';
 import Button from 'react-bootstrap/Button';
 import {useState, useEffect } from 'react';
+import DatePicker from "react-datepicker";
+import { CalendarContainer } from "react-datepicker";
 
-const expTab = () =>{
+
+const ExpTab = () =>{
+  const [startDate, setStartDate] = useState(new Date());
+  const MyContainer = ({ className, children }) => {
+    return (
+      <div style={{ padding: "16px", background: "#216ba5", color: "#fff" }}>
+        <CalendarContainer className={className}>
+
+          <div style={{ position: "relative" }}>{children}</div>
+        </CalendarContainer>
+      </div>
+    );
+  };
 
     return(
+
         <form className="row g-3">
 
       <div className="col-md-6">
@@ -23,34 +38,32 @@ const expTab = () =>{
       <label htmlfor="inputAddress" className="form-label">Location</label>
       <input type="text" className="form-control" id="inputAddress" placeholder="1234 Main St"/>
     </div>
-    <div className="col-12">
-      <label htmlfor="inputAddress2" className="form-label">Address 2</label>
-      <input type="text" className="form-control" id="inputAddress2" placeholder="Apartment, studio, or floor"/>
-    </div>
+
     <div className="col-md-6">
       <label htmlfor="inputCity" className="form-label">City</label>
       <input type="text" className="form-control" id="inputCity"/>
+    </div >
+    <div  style={{display: 'flex', flexDirection: 'row'}}>
+      <h3> From </h3>
+    <DatePicker
+      selected={startDate}
+      onChange={(date) => setStartDate(date)}
+      calendarContainer={MyContainer}
+    />
+    <h3> To </h3>
+        <DatePicker
+      selected={startDate}
+      onChange={(date) => setStartDate(date)}
+      calendarContainer={MyContainer}
+    />
     </div>
-    <div className="col-md-4">
-      <label htmlfor="inputState" className="form-label">State</label>
-      <select id="inputState" className="form-select">
-        <option selected>Choose...</option>
-        <option>Ontario</option>
-        <option>Quebec</option>
-        <option>British Colombia</option>
-        <option>Nova Scotia</option>
-        <option></option>
-  
-      </select>
-    </div>
-    <div className="col-md-2">
-      <label htmlfor="inputZip" className="form-label">Zip</label>
-      <input type="text" className="form-control" id="inputZip"/>
-    </div>
+    
+
+
     </form>
 
 
     )
 }
 
-export default expTab;
+export default ExpTab;
