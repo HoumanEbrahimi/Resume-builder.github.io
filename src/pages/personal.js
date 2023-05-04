@@ -6,8 +6,12 @@ import Row from 'react-bootstrap/Row';
 import Button from 'react-bootstrap/Button';
 import 'bootstrap/dist/css/bootstrap.css';
 
-const Personal = () => {
+const Personal = ({formData,setFormData},{page,setPage}) => {
 
+    const nextPage = () =>{
+      setPage(page)
+      console.log(page)
+    }
     return(
 
     <Form >
@@ -61,9 +65,7 @@ const Personal = () => {
       </Row>
 
 
-      <Button className="centering" variant="primary" type="submit">
-        Next
-      </Button>
+
     </Form>
 
     )
