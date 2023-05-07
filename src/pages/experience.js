@@ -15,24 +15,6 @@ const Experience = ({formData, setFormData},page) =>{
 
     const addComponent =()=>{
 
-      if (count==2){
-        setFormData({...formData,"exp_org2": "","exp_pos2": "","exp_des2": "","exp_dur2": ""}) 
-
-      }
-      else if (count==3){
-        setFormData({...formData,"exp_org3": "","exp_pos3": "","exp_des3": "","exp_dur3": ""}) 
-
-      }
-      else if (count==4){
-        setFormData({...formData,"exp_org4": "","exp_pos4": "","exp_des4": "","exp_dur4": ""}) 
-      }
-
-      if(count<=4){
-        setCount(count+1)
-
-      }
-
-
       console.log(count)
     }
 
@@ -50,8 +32,8 @@ const Experience = ({formData, setFormData},page) =>{
 
   <div className="flex-parent jc-center ">
     <button  className="button2" style={{width: 250}} onClick={addComponent}>Add Section </button>
-
   </div>
+  &nbsp;&nbsp;&nbsp;
 
         </div>
   )
