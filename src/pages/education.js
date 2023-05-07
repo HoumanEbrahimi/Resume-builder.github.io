@@ -14,21 +14,25 @@ import "react-datepicker/dist/react-datepicker.css";
 
 function Education({formData,setFormData}){
   
-  const [eduForm,setEduData]=useState([{
-    edu_school: "",
-    edu1_from: "",
-    edu1_to: "",
-    edu1_city:"",
-    edu1_qualification: "",
-    edu1_maj: "",
-}]);
+  const [eduForm,setEduData]=useState([{edu_school: "",edu_from: "",edu_to: "",edu_city:"",edu_qualification: "",edu_maj: ""}]);
+const [data,setData]=useState([{fname:"",lname:""}])
 
-const handleServiceAdd = (e) => {
-  e.preventDefault();
+  setFormData(eduForm)
 
-  setEduData([...eduForm, { eduschool: ""}]);
-  console.log(eduForm);
+const handleServiceAdd = () => {
+  //e.preventDefault();
+  setEduData([...eduForm, { edu_school: "",edu_from: "",edu_to: "",edu_city:"",edu_qualification: "",edu_maj: ""}])
+  
 };
+
+const handleChange=(e,i)=>{
+  const {name,value}=e.target
+  const onchangeVal = [...eduForm]
+  onchangeVal[i][name]=value
+  setEduData(onchangeVal)
+  
+
+}
 
   const [startDate, setStartDate] = useState(new Date());
 
@@ -40,24 +44,24 @@ const handleServiceAdd = (e) => {
           <div style={{ position: "relative" }}>{children}</div>
         </CalendarContainer>
       </div>
+
     );
   }
+    let arr=Array.from(formData)
     console.log(eduForm)
-
     return (
 
         <form className="row g-3">
-          {[setEduData].map((singleService, index) => (
+                      <h1 className="centering"> Education </h1> 
 
-          <div key={index}>
-            <h1 className="centering"> Education </h1> 
+          {eduForm.map((val,index) => (
+
+          <div>
         
         <div className="col-md-6">
 
-        <label htmlfor="inputEmail4" className="form-label">Institution</label>
-        <input type="email" className="form-control" id="inputEmail4"  value={eduForm.edu_school} onChange={(e) => {
-              setEduData({ ...eduForm, edu_school: e.target.value });
-            }}/>
+        <label htmlfor="inputEmail" className="form-label">Institution</label>
+        <input type="email" className="form-control" id="inputEmail"  name="edu_school" value={val.edu_school} onChange={(e)=>handleChange(e,index)}/>
         
       </div>
       <div class="col-md-4">
@@ -73,8 +77,7 @@ const handleServiceAdd = (e) => {
   </div>
       <div className="col-12">
         <label htmlfor="inputAddress" className="form-label">Major</label>
-        <input type="text" className="form-control" id="inputAddress" style={{width: 1000}}  value={eduForm.maj} placeholder="1234 Main St"  onChange={(e) => {
-              setEduData({ ...eduForm, edu1_maj: e.target.value })}}/>
+        <input type="text" className="form-control" id="inputAddress" style={{width: 1000}}  value={val.maj} placeholder="1234 Main St" name="edu_maj" onChange={(e)=>handleChange(e,index)}/>
       </div>
   
       <div className="col-md-6">
@@ -107,15 +110,20 @@ const handleServiceAdd = (e) => {
   <spacer>  <spacer>   <spacer></spacer> </spacer></spacer>
   <spacer>  <spacer>   <spacer></spacer> </spacer></spacer>
   <spacer>  <spacer>   <spacer></spacer> </spacer></spacer>
+  &nbsp;&nbsp;&nbsp;
 
-  <div className="flex-parent jc-center ">
+&nbsp;&nbsp;&nbsp;
 
-<button className="button2" style={{width: 250}} onClick={(e)=>handleServiceAdd(e)}>
+      </div>
+          ))}
+            <div className="flex-parent jc-center ">
+
+<button type="button" className="button2" style={{width: 250}} onClick={(e)=>handleServiceAdd(e)}>
   Add Section
 </button>
 </div>
-      </div>
-          ))}
+&nbsp;&nbsp;&nbsp;
+
         </form>
 
     );

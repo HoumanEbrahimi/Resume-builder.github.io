@@ -48,19 +48,22 @@ const ExpTab = ({formData, setFormData}) =>{
       <input type="text" className="form-control" id="inputCity"/>
     </div >
     <div  style={{display: 'flex', flexDirection: 'row'}}>
-      <h3 style={{fontSize:20,paddingLeft:"px"}}> From </h3>
+      <h2 style={{fontSize:20}}>&nbsp;&nbsp;&nbsp;From&nbsp;&nbsp;&nbsp;</h2>
     <DatePicker
       selected={startDate}
       onChange={(date) => setStartDate(date)}
       calendarContainer={MyContainer}
     />
-    <h3 style={{fontSize:20,paddingLeft:"px"}}> To </h3>
+    <h2 style={{fontSize:20}}>&nbsp;&nbsp;&nbsp;To&nbsp;&nbsp;&nbsp;</h2>
+    
         <DatePicker
       selected={startDate}
       onChange={(date) => setStartDate(date)}
       calendarContainer={MyContainer}
     />
     </div>
+    &nbsp;&nbsp;&nbsp;
+
     </form>
 
 
