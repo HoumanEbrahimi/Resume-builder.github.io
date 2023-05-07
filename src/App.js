@@ -4,7 +4,7 @@ import Education from './pages/education';
 import Exp from './pages/experienceTab'
 import Personal from './pages/personal';
 import Experience from './pages/experience';
-import Forms from './pages/form';
+import Projects from './pages/Projects';
 
 
 
@@ -55,6 +55,10 @@ function App() {
     } else if (page === 2) {
       return <Exp formData={formData} setFormData={setFormData} page={page} setPage={setPage}/>;
     } 
+    else{
+      return <Projects formData={formData} setFormData={setFormData} page={page} setPage={setPage}/>;
+
+    }
   }
 
   return (
@@ -70,8 +74,8 @@ function App() {
       <div className="flex-parent jc-center ">
 
           <button className="button2" style={{width: 250}} disabled={page===0}  onClick={() => {
-          setPage((currPage) => currPage - 1);
-      }}>Prev </button>
+          setPage((currPage) => currPage - 1) 
+          }}>Prev </button>
 </div>
 
     </div>
