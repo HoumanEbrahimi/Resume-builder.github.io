@@ -24,10 +24,11 @@ function App() {
     github: "",
     skills: "",
 
-    exp1_org: "",
-    exp1_pos: "",
-    exp1_desc: "",
-    exp1_dur: "",
+    exp_org: "",
+    exp_pos: "",
+    exp_loc:"",
+    exp_desc: "",
+    exp_dur: "",
 
 
     proj1_title: "",
