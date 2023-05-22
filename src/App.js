@@ -30,25 +30,16 @@ function App() {
     exp_desc: "",
     exp_dur: "",
 
+    proj_title: "",
+    proj_link: "",
+    proj_desc: "",
 
-    proj1_title: "",
-    proj1_link: "",
-    proj1_desc: "",
-    proj2_title: "",
-    proj2_link: "",
-    proj2_desc: "",
+    edu_school: "",
+    edu_year: "",
+    edu_qualification: "",
+    edu_maj: "",
 
-    edu1_school: "",
-    edu1_year: "",
-    edu1_qualification: "",
-    edu1_maj: "",
-    edu2_school: "",
-    edu2_year: "",
-    edu2_qualification: "",
-    edu2_maj: "",
-
-    extra_1: "",
-    extra_2: "",
+    extra: ""
   });
 
     const createAndDownloadPDF = () => {
@@ -69,16 +60,17 @@ function App() {
 
 
   };
+  console.log("yoo nice",formData);
   const pages =()=>{
     if (page === 0) {
-      return <Personal formData={formData} setFormData={setFormData} page={page} setPage={setPage}/>;
+      return <Personal formData={formData} setFormData={setFormData} />;
     } else if (page === 1) {
-      return <Education formData={formData} setFormData={setFormData} page={page} setPage={setPage}/>;
+      return <Education formData={formData} setFormData={setFormData} />;
     } else if (page === 2) {
-      return <Exp formData={formData} setFormData={setFormData} page={page} setPage={setPage}/>;
+      return <Exp formData={formData} setFormData={setFormData} />;
     } 
     else{
-      return <Projects formData={formData} setFormData={setFormData} page={page} setPage={setPage}/>;
+      return <Projects formData={formData} setFormData={setFormData} />;
 
     }
   }
@@ -102,12 +94,9 @@ function App() {
 &nbsp;&nbsp;&nbsp;
   <div className="flex-parent jc-center ">
       
-    <button className="button3" style={{width: 250}} disabled={page<3}            onClick={() => {createAndDownloadPDF()}}>
+    <button className="button3" style={{width: 250}} disabled={page<3} onClick={() => {createAndDownloadPDF()}}>
     Download PDF </button>
   </div>
-
-
-
     </div>
   );
 }

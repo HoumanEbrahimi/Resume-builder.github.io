@@ -13,62 +13,99 @@ const Personal = ({formData,setFormData},{page,setPage}) => {
       console.log(page)
     }
     return(
-
-    <Form >
-      <h1 className="centering"> Personal info </h1>
-      <Row className="mb-3">
-        <Form.Group as={Col} controlId="formGridEmail">
-          <Form.Label>Email</Form.Label>
-          <Form.Control type="email" placeholder="Enter email" />
-        </Form.Group>
-
-        <Form.Group as={Col} controlId="formGridPassword">
-          <Form.Label>Password</Form.Label>
-          <Form.Control type="password" placeholder="Password" />
-        </Form.Group>
-      </Row>
-
-      <Form.Group className="mb-3" controlId="formGridAddress1">
-        <Form.Label>Address</Form.Label>
-        <Form.Control placeholder="Address" />
-      </Form.Group>
-
-      <Form.Group className="mb-3" controlId="formGridAddress1">
-        <Form.Label>LinkedIn</Form.Label>
-        <Form.Control placeholder="URL" />
-      </Form.Group>
-
-
-
-
-      <Row className="mb-3">
-        <Form.Group as={Col} controlId="formGridCity">
-          <Form.Label>City</Form.Label>
-          <Form.Control placeholder="city"/>
-        </Form.Group>
-
-        <Form.Group as={Col} controlId="formGridState">
-          <Form.Label>State</Form.Label>
-          <Form.Select defaultValue="Choose...">
-            <option>Choose...</option>
-            <option> Ontario</option>
-            <option> Quebec</option>
-            <option> British Colombia </option>
-            <option>...</option>
-          </Form.Select>
-        </Form.Group>
-
-        <Form.Group as={Col} controlId="formGridZip">
-          <Form.Label>Zip</Form.Label>
-          <Form.Control />
-        </Form.Group>
-      </Row>
-
-
-
-    </Form>
-
-    )
-}
+        <div className="container">
+          <form className="row g-3">
+            <div className="col-md-6">
+              <label for="name" className="form-label">
+                Name
+              </label>
+              <input
+                type="text"
+                className="form-control"
+                id="name"
+                value={formData.name}
+                onChange={(e) => {
+                  setFormData({ ...formData, name: e.target.value });
+                }}
+              />
+            </div>
+            <div className="col-md-6">
+              <label for="Email" className="form-label">
+                Email
+              </label>
+              <input
+                type="email"
+                className="form-control"
+                id="Email"
+                value={formData.email}
+                onChange={(e) => {
+                  setFormData({ ...formData, email: e.target.value });
+                }}
+              />
+            </div>
+            <div className="col-md-6">
+              <label for="phone" className="form-label">
+                Phone
+              </label>
+              <input
+                type="text"
+                className="form-control"
+                id="phone"
+                value={formData.phone}
+                onChange={(e) => {
+                  setFormData({ ...formData, phone: e.target.value });
+                }}
+              />
+            </div>
+    
+            <div className="col-12">
+              <label for="github" className="form-label">
+                Github
+              </label>
+              <input
+                type="text"
+                className="form-control"
+                id="github"
+                placeholder="https://github/YOURUSERNAME"
+                value={formData.github}
+                onChange={(e) => {
+                  setFormData({ ...formData, github: e.target.value });
+                }}
+              />
+            </div>
+            <div className="col-12">
+              <label for="LinkedIn" className="form-label">
+                LinkedIn
+              </label>
+              <input
+                type="text"
+                className="form-control"
+                id="LinkedIn"
+                placeholder="https://linkedIn/YOURUSERNAME"
+                value={formData.linkedin}
+                onChange={(e) => {
+                  setFormData({ ...formData, linkedin: e.target.value });
+                }}
+              />
+            </div>
+            <div className="col-12">
+              <label for="Skills" className="form-label">
+                Skills
+              </label>
+              <input
+                type="text"
+                className="form-control"
+                id="Skills"
+                placeholder="Enter skills and separate each of them with a comma "
+                value={formData.skills}
+                onChange={(e) => {
+                  setFormData({ ...formData, skills: e.target.value });
+                }}
+              />
+            </div>
+          </form>
+        </div>
+      );
+    };
 
 export default Personal;

@@ -16,11 +16,12 @@ function Education({formData,setFormData}){
   
   const [eduForm,setEduData]=useState([{edu_school: "",edu_from: "",edu_to: "",edu_city:"",edu_qualification: "",edu_maj: "",edu_deg:""}]);
 
-  setFormData(eduForm)
+  //setFormData(eduForm)
 
 const handleServiceAdd = () => {
-  //e.preventDefault();
+  
   setEduData([...eduForm, { edu_school: "",edu_from: "",edu_to: "",edu_city:"",edu_qualification: "",edu_maj: "",edu_deg:""}])
+  setFormData({...formData, edu_school: "",edu_from: "",edu_to: "",edu_city:"",edu_qualification: "",edu_maj: "",edu_deg:""})
   
 };
 
@@ -29,8 +30,7 @@ const handleChange=(e,i)=>{
   const onchangeVal = [...eduForm]
   onchangeVal[i][name]=value
   setEduData(onchangeVal)
-  
-
+  setFormData({ ...formData,onchangeVal });
 }
 
   const [startDate, setStartDate] = useState(new Date());
@@ -47,11 +47,11 @@ const handleChange=(e,i)=>{
     );
   }
     let arr=Array.from(formData)
-    console.log(eduForm)
+   // console.log("education",eduForm)
     return (
 
         <form className="row g-3">
-                      <h1 className="centering"> Education </h1> 
+          <h1 className="centering"> Education </h1> 
 
           {eduForm.map((val,index) => (
 
@@ -60,7 +60,8 @@ const handleChange=(e,i)=>{
         <div className="col-md-6">
 
         <label htmlfor="inputEmail" className="form-label">Institution</label>
-        <input type="email" className="form-control" id="inputEmail"  name="edu_school" value={val.edu_school} onChange={(e)=>handleChange(e,index)}/>
+        <input type="email" className="form-control" id="inputEmail"  name="edu_school" value={val.edu_school} 
+        onChange={(e)=>handleChange(e,index)} ></input>
         
       </div>
       <div class="col-md-4">
@@ -76,7 +77,8 @@ const handleChange=(e,i)=>{
   </div>
       <div className="col-12">
         <label htmlfor="inputAddress" className="form-label">Major</label>
-        <input type="text" className="form-control" id="inputAddress" style={{width: 1000}}  value={val.maj} placeholder="1234 Main St" name="edu_maj" onChange={(e)=>handleChange(e,index)}/>
+        <input type="text" className="form-control" id="inputAddress" style={{width: 1000}}  value={val.maj} placeholder="1234 Main St" 
+        name="edu_maj" onChange={(e)=>handleChange(e,index)}/>
       </div>
   
       <div className="col-md-6">
@@ -97,7 +99,6 @@ const handleChange=(e,i)=>{
       calendarContainer={MyContainer}
       name="edu_from"
       onChange={(date)=> handleChange({ target: { value: val.edu_form, name:"edu_from"} })}
-
 
     />
     
