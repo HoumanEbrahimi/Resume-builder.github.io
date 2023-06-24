@@ -8,6 +8,7 @@ import Projects from './pages/Projects';
 import { saveAs } from "file-saver";
 
 
+
 import axios from "axios";
 
 import {useState, useEffect } from 'react';
@@ -34,33 +35,35 @@ function App() {
     proj_link: "",
     proj_desc: "",
 
-    edu_school: "",
-    edu_year: "",
-    edu_qualification: "",
-    edu_maj: "",
+    edu_school0: "",edu_from0: "",edu_to0: "",edu_city0:"",edu_qualification0: "",edu_maj0: "",edu_deg0:"",
 
     extra: ""
   });
 
-    const createAndDownloadPDF = () => {
-      axios
-      .post("http://localhost:4000/create-pdf", formData)
-      .then(() =>
-        axios.get("http://localhost:4000/fetch-pdf", {
-          responseType: "blob",
-        })
-      )
+
+
+  const createAndDownloadPdf = () => {
+    
+    axios.post('/create-pdf', formData)
+      .then(() => axios.get('fetch-pdf', { responseType: 'blob' }))
       .then((res) => {
-        const pdfBlob = new Blob([res.data], {
-          type: "application/pdf",
-        });
-        setSuccess(true && res.status === 200);
-        saveAs(pdfBlob, "Resume.pdf");
-      });
+        const pdfBlob = new Blob([res.data], { type: 'application/pdf' });
 
+        saveAs(pdfBlob, 'newPdf.pdf');
+      })
+  }
 
-  };
-  console.log("yoo nice",formData);
+   // const createAndDownloadPDF = () => {
+   // axios.post('/create-pdf',state)
+   //   .then(() => axios.get('fetch-pdf', { responseType: 'blob' }))
+   //   .then((res) => {
+   //     const pdfBlob = new Blob([res.data], { type: 'application/pdf' });
+
+   //     saveAs(pdfBlob, 'newPdf.pdf');
+   //   })
+   //   console.log("yoo nice");
+
+ // };
   const pages =()=>{
     if (page === 0) {
       return <Personal formData={formData} setFormData={setFormData} />;
@@ -74,6 +77,7 @@ function App() {
 
     }
   }
+  console.log(formData)
 
   return (
     <div> 
@@ -94,7 +98,7 @@ function App() {
 &nbsp;&nbsp;&nbsp;
   <div className="flex-parent jc-center ">
       
-    <button className="button3" style={{width: 250}} disabled={page<3} onClick={() => {createAndDownloadPDF()}}>
+    <button className="button3" style={{width: 250}} disabled={page<3} onClick={() => {createAndDownloadPdf()}}>
     Download PDF </button>
   </div>
     </div>

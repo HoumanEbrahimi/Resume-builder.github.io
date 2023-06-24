@@ -10,23 +10,29 @@ import { CalendarContainer } from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 
 const ExpTab = ({formData, setFormData}) =>{
+  const [val,setVal]=useState(0);
   const [startDate, setStartDate] = useState(new Date());
   const [expForm,setExpData]=useState([{exp_org: "",exp_pos: "",exp_loc:"",exp_desc: "",exp_dur: ""}]);
 
   //setFormData(expForm)
   const handleServiceAdd = () => {
+    setVal((val) => val + 1) 
+
     setExpData([...expForm, {exp_org: "",exp_pos: "",exp_loc:"",exp_desc: "",exp_dur: ""}])
-    setFormData({...formData,exp_org: "",exp_pos: "",exp_loc:"",exp_desc: "",exp_dur: ""})
+    if (val==1){
+      setFormData(...formData,{exp_org1: "",exp_pos1: "",exp_loc1:"",exp_desc1: "",exp_dur1: ""})
+
+    }
 
   };
 
-  
+  console.log(val)
   const handleChange=(e,i)=>{
     const {name,value}=e.target
     const onchangeVal2 = [...expForm]
     onchangeVal2[i][name]=value
     setExpData(onchangeVal2)
-    setFormData({ ...formData,onchangeVal2 });
+    setFormData({ ...formData,...expForm });
 
   
   }
