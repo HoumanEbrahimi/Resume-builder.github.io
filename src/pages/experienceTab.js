@@ -10,104 +10,123 @@ import { CalendarContainer } from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 
 const ExpTab = ({formData, setFormData}) =>{
+  const [val,setVal]=useState(0);
   const [startDate, setStartDate] = useState(new Date());
   const [expForm,setExpData]=useState([{exp_org: "",exp_pos: "",exp_loc:"",exp_desc: "",exp_dur: ""}]);
 
+  //setFormData(expForm)
+  const handleServiceAdd = () => {
+    setVal((val) => val + 1) 
+
+    setExpData([...expForm, {exp_org: "",exp_pos: "",exp_loc:"",exp_desc: "",exp_dur: ""}])
+    if (val==1){
+      setFormData(...formData,{exp_org1: "",exp_pos1: "",exp_loc1:"",exp_desc1: "",exp_dur1: ""})
+
+    }
+
+  };
+
+  console.log(val)
+  const handleChange=(e,i)=>{
+    const {name,value}=e.target
+    const onchangeVal2 = [...expForm]
+    onchangeVal2[i][name]=value
+    setExpData(onchangeVal2)
+    setFormData({ ...formData,...expForm });
+
+  
+  }
+
   const MyContainer = ({ className, children }) => {
     return (
-      <div style={{ padding: "1px", background: "#216ba5", color: "#fff" }}>
+      <div style={{ padding: "16px", background: "#216ba5", color: "#fff" }}>
         <CalendarContainer className={className}>
 
           <div style={{ position: "relative" }}>{children}</div>
         </CalendarContainer>
       </div>
-      
+
     );
   }
-  const handleChange=(e,i)=>{
-    const {name,value}=e.target
-    const onchangeVal = [...expForm]
-    onchangeVal[i][name]=value
-    setExpData(onchangeVal)
-    
-  
-  }
-  const handleServiceAdd = () => {
-    setExpData([...expForm, {exp_org: "",exp_pos: "",exp_loc:"",exp_desc: "",exp_dur: ""}])
-    
-  };
-  
-    console.log(formData)
-    
-    return(
+    let arr=Array.from(formData)
+    //console.log("exp",formData);
 
+    return (
 
-    <form className="row g-3">
-            <h1 className="centering">
-        Experience 
-      </h1>
-      {expForm.map((val,index) => (
+        <form className="row g-3">
+                      <h1 className="centering"> Experience </h1> 
+
+          {expForm.map((val,index) => (
+
           <div>
+        
+        <div className="col-md-6">
 
+        <label htmlfor="inputEmail" className="form-label">Company</label>
+        <input type="email" className="form-control" id="inputEmail"  name="exp_org" value={val.exp_org} onChange={(e)=>handleChange(e,index)}/>
+        
+      </div>
+
+      <div className="col-12">
+        <label htmlfor="inputAddress" className="form-label">Title</label>
+        <input type="text" className="form-control" id="inputAddress" style={{width: 1000}}  value={val.exp_pos} placeholder="1234 Main St" name="exp_pos" onChange={(e)=>handleChange(e,index)}/>
+      </div>
+  
       <div className="col-md-6">
-      <label htmlfor="inputEmail4" className="form-label">Company</label>
-      <input type="email" className="form-control" id="inputEmail4" name="exp_org" value={formData.exp_org} onChange={(e) => {
-              setFormData({ ...formData, exp_org: e.target.value });
-            }}/>
-    </div>
-    <div className="col-md-6">
-      <label htmlfor="inputPassword4" className="form-label centering">Job Title</label>
-      <input type="password" className="form-control" style={{width:1000}} id="inputPassword4" name="exp_pos" value={formData.exp_pos} onChange={(e) => {
-              setFormData({ ...formData, exp_pos: e.target.value });
-            }}/>
-    </div>
-    <div className="col-12">
-      <label htmlfor="inputAddress" className="form-label">Location</label>
-      <input type="text" className="form-control"  style={{width:1000}} name="exp_loc" id="inputAddress" placeholder="1234 Main St" value={formData.exp_loc} onChange={(e) => {
-              setFormData({ ...formData, exp_loc: e.target.value });
-            }}/>
-    </div>
+        <label htmlfor="inputCity" className="form-label">City</label>
+        <input type="text" className="form-control" style={{width: 250 }} id="inputCity" value={val.exp_loc} 
+        name="exp_loc"
+        onChange={(e)=>handleChange(e,index)}
+        />
+        <br></br>
+        <br></br>
 
-    <div className="col-md-6">
-      <label htmlfor="inputCity" className="form-label">City</label>
-      <input type="text" className="form-control" id="inputCity"/>
-    </div >
-    <div  style={{display: 'flex', flexDirection: 'row'}}>
-      <h2 style={{fontSize:20}}>&nbsp;&nbsp;&nbsp;From&nbsp;&nbsp;&nbsp;</h2>
+      </div >
+
+      <div  style={{display: 'flex', flexDirection: 'row'}}>
+      <h3 style={{fontSize:20,}}> &nbsp;From&nbsp;&nbsp;&nbsp; </h3>
     <DatePicker
       selected={startDate}
-      onChange={(date) => setStartDate(date)}
       calendarContainer={MyContainer}
+      name="edu_from"
+
+
     />
-    <h2 style={{fontSize:20}}>&nbsp;&nbsp;&nbsp;To&nbsp;&nbsp;&nbsp;</h2>
     
+    <h3 style={{fontSize:20,paddingLeft:"px"}}> &nbsp;&nbsp;&nbsp;To&nbsp;&nbsp;&nbsp; </h3>
         <DatePicker
       selected={startDate}
       onChange={(date) => setStartDate(date)}
       calendarContainer={MyContainer}
-    />  <spacer>  <spacer>   <spacer></spacer> </spacer></spacer>
-    <spacer>  <spacer>   <spacer></spacer> </spacer></spacer>
-    <spacer>  <spacer>   <spacer></spacer> </spacer></spacer>
-    &nbsp;&nbsp;&nbsp;
-  
-  &nbsp;&nbsp;&nbsp;
- 
-    </div>
-    </div>
-              ))}
+      name="edu_to"
+      value={val.edu_to}
+    /> 
 
-    <div className="flex-parent jc-center ">
+
+  </div>
+
+  <spacer>  <spacer>   <spacer></spacer> </spacer></spacer>
+  <spacer>  <spacer>   <spacer></spacer> </spacer></spacer>
+  <spacer>  <spacer>   <spacer></spacer> </spacer></spacer>
+  &nbsp;&nbsp;&nbsp;
+
+&nbsp;&nbsp;&nbsp;
+
+      </div>
+          ))}
+            <div className="flex-parent jc-center ">
 
 <button type="button" className="button2" style={{width: 250}} onClick={(e)=>handleServiceAdd(e)}>
   Add Section
 </button>
 </div>
-    &nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp;
 
-    </form>
+        </form>
 
+    );
+  
 
-    )
 }
 
 export default ExpTab;
