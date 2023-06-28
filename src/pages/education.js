@@ -28,13 +28,13 @@ function Education({formData,setFormData}){
   
     }
     else if (value===1){
-      setFormData([{...formData, edu_school2: "",edu_from2: "",edu_to2: "",edu_city2:"",edu_qualification2: "",edu_maj2: "",edu_deg2:""}])
+      setFormData({...formData, edu_school2: "",edu_from2: "",edu_to2: "",edu_city2:"",edu_qualification2: "",edu_maj2: "",edu_deg2:""})
       setEduData([...eduForm, { edu_school2: "",edu_from2: "",edu_to2: "",edu_city2:"",edu_qualification2: "",edu_maj2: "",edu_deg2:""}])
   
   
     }
     else if (value===2){
-      setFormData([{...formData, edu_school3: "",edu_from3: "",edu_to3: "",edu_city3:"",edu_qualification3: "",edu_maj3: "",edu_deg3:""}])
+      setFormData({...formData, edu_school3: "",edu_from3: "",edu_to3: "",edu_city3:"",edu_qualification3: "",edu_maj3: "",edu_deg3:""})
       setEduData([...eduForm, { edu_school3: "",edu_from3: "",edu_to3: "",edu_city3:"",edu_qualification3: "",edu_maj3: "",edu_deg3:""}])
   
   
@@ -62,8 +62,7 @@ const handleChange=(e,i)=>{
 
     );
   }
- //   let arr=Array.from(formData)
- //   console.log("education",arr)
+
     return (
 
         <form className="row g-3">
@@ -89,7 +88,8 @@ const handleChange=(e,i)=>{
       </div>
       <div class="col-md-4">
     <label for="inputState" class="form-label" >Degree</label>
-    <select id="inputState" class="form-select"  value={val.edu_deg}   name="edu_deg" onChange={(e)=>handleChange(e,index)}>
+    <select id="inputState" class="form-select"  value={formData.edu_deg}      name={`edu_deg${value}`}
+onChange={(e)=>handleChange(e,index)}>
       <option selected>Choose...</option>
         <option value="bachelor">Bachelor's</option>
         <option value="masters">Masters</option>
@@ -101,7 +101,7 @@ const handleChange=(e,i)=>{
       <div className="col-12">
         <label htmlfor="inputAddress" className="form-label">Major</label>
         <input type="text" className="form-control" id="inputAddress" style={{width: 1000}}  value={val.maj} placeholder="1234 Main St" 
-        name="edu_maj" onChange={(e)=>handleChange(e,index)}/>
+        name={`edu_maj${value}`} onChange={(e)=>handleChange(e,index)}/>
       </div>
   
       <div className="col-md-6">
