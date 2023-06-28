@@ -28,13 +28,13 @@ function Education({formData,setFormData}){
   
     }
     else if (value===1){
-      setFormData([{...formData, edu_school2: "",edu_from2: "",edu_to2: "",edu_city2:"",edu_qualification2: "",edu_maj2: "",edu_deg2:""}])
+      setFormData({...formData, edu_school2: "",edu_from2: "",edu_to2: "",edu_city2:"",edu_qualification2: "",edu_maj2: "",edu_deg2:""})
       setEduData([...eduForm, { edu_school2: "",edu_from2: "",edu_to2: "",edu_city2:"",edu_qualification2: "",edu_maj2: "",edu_deg2:""}])
   
   
     }
     else if (value===2){
-      setFormData([{...formData, edu_school3: "",edu_from3: "",edu_to3: "",edu_city3:"",edu_qualification3: "",edu_maj3: "",edu_deg3:""}])
+      setFormData({...formData, edu_school3: "",edu_from3: "",edu_to3: "",edu_city3:"",edu_qualification3: "",edu_maj3: "",edu_deg3:""})
       setEduData([...eduForm, { edu_school3: "",edu_from3: "",edu_to3: "",edu_city3:"",edu_qualification3: "",edu_maj3: "",edu_deg3:""}])
   
   
@@ -62,8 +62,7 @@ const handleChange=(e,i)=>{
 
     );
   }
- //   let arr=Array.from(formData)
- //   console.log("education",arr)
+
     return (
 
         <form className="row g-3">
