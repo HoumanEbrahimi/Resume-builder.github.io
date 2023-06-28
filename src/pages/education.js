@@ -88,7 +88,8 @@ const handleChange=(e,i)=>{
       </div>
       <div class="col-md-4">
     <label for="inputState" class="form-label" >Degree</label>
-    <select id="inputState" class="form-select"  value={val.edu_deg}   name="edu_deg" onChange={(e)=>handleChange(e,index)}>
+    <select id="inputState" class="form-select"  value={formData.edu_deg}      name={`edu_deg${value}`}
+onChange={(e)=>handleChange(e,index)}>
       <option selected>Choose...</option>
         <option value="bachelor">Bachelor's</option>
         <option value="masters">Masters</option>
@@ -100,7 +101,7 @@ const handleChange=(e,i)=>{
       <div className="col-12">
         <label htmlfor="inputAddress" className="form-label">Major</label>
         <input type="text" className="form-control" id="inputAddress" style={{width: 1000}}  value={val.maj} placeholder="1234 Main St" 
-        name="edu_maj" onChange={(e)=>handleChange(e,index)}/>
+        name={`edu_maj${value}`} onChange={(e)=>handleChange(e,index)}/>
       </div>
   
       <div className="col-md-6">
